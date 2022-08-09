@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Site extends Model
 {
     use HasFactory;
+
+    public function Servicio(){
+        $this->hasMany(Service::class,'id_sites','id');
+    }
 }

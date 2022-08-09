@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lugar',60);
             $table->string('nombre',60);
             $table->string('direccion',60);
-            $table->bigInteger('telefono')->length(10);
+            $table->string('telefono',60);
             $table->string('correo',60);
             $table->string('foto');
             $table->text('descripcion');
