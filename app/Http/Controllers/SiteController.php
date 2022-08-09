@@ -35,7 +35,31 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validacion = request()->validate([
+            'municipio' => 'required',
+            'lugar' => 'required',
+            'nombre' => 'required'
+        ]);
+
+        if (isset($validacion)) {
+            $sitio = new Site;
+            $sitio->municipio = $request->municipio;
+            $sitio->lugar = $request->lugar;
+            $sitio->nombre = $request->nombre;
+            $sitio->direccion = $request->direccion;
+            $sitio->telefono = $request->telefono;
+            $sitio->correo = $request->correo;
+            $sitio->foto = $request->foto;
+            $sitio->descripcion = $request->descripcion;
+            $sitio->tipo_actividad = $request->tipo_actividad;
+            $sitio->horario_atencion = $request->horario_atencion;
+            $sitio->estado = $request->estado;
+            $sitio->save();
+            session()->flash('message','Sitio se creo a satisfaccion!!');
+            return redirect()->route('site.create');
+
+
+        }
     }
 
     /**
