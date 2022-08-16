@@ -14,7 +14,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        //
+        $sitios = Site::simplePaginate(3);
+        return view('sites.index', compact('sitios'));
     }
 
     /**
@@ -49,13 +50,17 @@ class SiteController extends Controller
             $sitio->direccion = $request->direccion;
             $sitio->telefono = $request->telefono;
             $sitio->correo = $request->correo;
-            $sitio->foto = $request->foto;
+
+            $fotografia = $request->file('foto');
+            $fotografia->move('img',$fotografia->getClientOriginalName());
+            $sitio->foto = $fotografia->getClientOriginalName();
+            
             $sitio->descripcion = $request->descripcion;
             $sitio->tipo_actividad = $request->tipo_actividad;
             $sitio->horario_atencion = $request->horario_atencion;
             $sitio->estado = $request->estado;
             $sitio->save();
-            session()->flash('message','Sitio se creo a satisfaccion!!');
+            session()->flash('message','Sitio creado a satisfaccion!!');
             return redirect()->route('site.create');
 
 
