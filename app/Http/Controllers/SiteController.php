@@ -86,7 +86,7 @@ class SiteController extends Controller
      */
     public function edit(Site $site)
     {
-        //
+        return view('sites.edit',compact('site'));
     }
 
     /**

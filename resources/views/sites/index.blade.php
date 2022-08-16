@@ -24,6 +24,7 @@
                     <th scope="col">Tipo Actividad</th>
                     <th scope="col">Horario atención</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +47,19 @@
                         <td>{{$sitio->tipo_actividad}}</td>
                         <td>{{$sitio->horario_atencion}}</td>
                         <td>{{$sitio->estado}}</td>
+                        <td>
+                            <a href="{{route('site.edit',$sitio)}}" class="btn btn-secondary" >
+                                <i class="far fa-edit"></i>
+                            </a>
+
+                            <form action="" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>                    
                 @endforeach
             </tbody>
