@@ -14,8 +14,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $sitios = Site::simplePaginate(3);
-        return view('sites.index', compact('sitios'));
+        $sites = Site::simplePaginate(3);
+        return view('sites.index', compact('sites'));
     }
 
     /**
@@ -98,7 +98,42 @@ class SiteController extends Controller
      */
     public function update(Request $request, Site $site)
     {
-        //
+        $validacion = request()->validate([
+            'municipio' => 'required',
+            'lugar' => 'required',
+            'nombre' => 'required'
+        ]);
+
+        if (isset($validacion)) {
+            
+            $site->municipio = $request->municipio;
+            $site->lugar = $request->lugar;
+            $site->nombre = $request->nombre;
+            $site->direccion = $request->direccion;
+            $site->telefono = $request->telefono;
+            $site->correo = $request->correo;
+
+           if (isset($request->foto)) {
+                $image_path = public_path().'/img/'.$site->foto;
+                unlink($image_path);
+
+               $fotografia = $request->file('foto');
+                $fotografia->move('img',$fotografia->getClientOriginalName());
+                $site->foto = $fotografia->getClientOriginalName();
+           }else{
+                    $site->foto = $site->foto;
+                }
+                
+           }
+            
+            $site->descripcion = $request->descripcion;
+            $site->tipo_actividad = $request->tipo_actividad;
+            $site->horario_atencion = $request->horario_atencion;
+            $site->estado = $request->estado;
+            $site->save();
+            session()->flash('upload','Sitio actualizado correctamente!!');
+            return redirect()->route('site.index');
+
     }
 
     /**
@@ -109,6 +144,10 @@ class SiteController extends Controller
      */
     public function destroy(Site $site)
     {
-        //
+        $image_path = public_path().'/img/'.$site->foto;
+        unlink($image_path);
+        $site->delete();
+        session()->flash('Eliminar','Sitio eliminado...');
+        return redirect()->route('site.index');
     }
 }

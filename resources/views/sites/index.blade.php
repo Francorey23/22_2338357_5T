@@ -9,6 +9,8 @@
 @section('content')
    <div class="card">
     <div class="card-body">
+        <div class="table-responsive">    
+
         <table class="table">
             <thead>
                 <tr>
@@ -28,31 +30,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($sitios as $sitio)
+                @foreach ($sites as $site)
                     <tr>
-                        <td>{{$sitio->id}}</td>
-                        <td>{{$sitio->municipio}}</td>
-                        <td>{{$sitio->lugar}}</td>
-                        <td>{{$sitio->nombre}}</td>
-                        <td>{{$sitio->direccion}}</td>
-                        <td>{{$sitio->telefono}}</td>
-                        <td>{{$sitio->correo}}</td>
+                        <td>{{$site->id}}</td>
+                        <td>{{$site->municipio}}</td>
+                        <td>{{$site->lugar}}</td>
+                        <td>{{$site->nombre}}</td>
+                        <td>{{$site->direccion}}</td>
+                        <td>{{$site->telefono}}</td>
+                        <td>{{$site->correo}}</td>
                         
                         <td>
                             <div class="imagen">
-                                <img class=" img-fluid" src="{{asset('img/'.$sitio->foto)}}" alt="">
+                                <img class=" img-fluid" src="{{asset('img/'.$site->foto)}}" alt="">
                             </div>
                         </td>
-                        <td>{{$sitio->descripcion}}</td>
-                        <td>{{$sitio->tipo_actividad}}</td>
-                        <td>{{$sitio->horario_atencion}}</td>
-                        <td>{{$sitio->estado}}</td>
+                        <td>{{$site->descripcion}}</td>
+                        <td>{{$site->tipo_actividad}}</td>
+                        <td>{{$site->horario_atencion}}</td>
+                        <td>{{$site->estado}}</td>
                         <td>
-                            <a href="{{route('site.edit',$sitio)}}" class="btn btn-secondary" >
+                            <a href="{{route('site.edit',$site)}}" class="btn btn-secondary" >
                                 <i class="far fa-edit"></i>
                             </a>
 
-                            <form action="" method="POST">
+                            <form action="{{route('site.destroy',$site)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-secondary">
@@ -64,8 +66,9 @@
                 @endforeach
             </tbody>
         </table>
-        {{$sitios->links()}}
+        {{$sites->links()}}
     </div>
+</div>
    </div>
 @stop
 

@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-boddy">
-            <form action="{{route('site.update', $sitios)}}" enctype="multipart/form-data" method="POST">
+            <form action="{{route('site.update', $site)}}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
                 @if (session()->has('message'))
@@ -24,74 +24,74 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Municipio</label>
-                        <input type="text" name="municipio" class="form-control" value="{{$sitio->municipio}}">
+                        <input type="text" name="municipio" class="form-control" value="{{$site->municipio}}">
                         <small class="text-danger">{{$errors->first('municipio')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Lugar</label>
-                        <input type="text" name="lugar" class="form-control" value="{{$sitio->lugar}}>
+                        <input type="text" name="lugar" class="form-control" value="{{$site->lugar}}">
                         <small class="text-danger">{{$errors->first('lugar')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" value="{{$sitio->nombre}} >
+                        <input type="text" name="nombre" class="form-control" value="{{$site->nombre}}" >
                         <small class="text-danger">{{$errors->first('nombre')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" value="{{$sitio->direccion}}>
+                        <input type="text" name="direccion" class="form-control" value="{{$site->direccion}}">
                         <small class="text-danger">{{$errors->first('telefono')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" value="{{$sitio->telefono}}>
+                        <input type="text" name="telefono" class="form-control" value="{{$site->telefono}}">
                         <small class="text-danger">{{$errors->first('telefono')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Correo</label>
-                        <input type="text" name="correo" class="form-control" value="{{$sitio->correo}}>
+                        <input type="text" name="correo" class="form-control" value="{{$site->correo}}">
                         <small class="text-danger">{{$errors->first('correo')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Fotografia:</label><br>
                         <span class="btn btn-secondary btn-file">
-                            <i class="far fa-images"></i> <input accept="image/*" onchange="vistaPrevia(event)" type="file" name="foto" value="{{$sitio->foto}} >
+                            <i class="far fa-images"></i> <input accept="image/*" onchange="vistaPrevia(event)" type="file" name="foto" value="{{$site->foto}}">
                         </span>
                         <small class="text-danger">{{$errors->first('fotografia')}}</small>
                     </div>
                     
                     <div class="imagen col-md-6 col-lg-6 col-sm-12">
                         <label for="">Vista previa fotografia:</label><br>
-                        <img src="{{asset('img/'.$sitio->foto)}}" id="img-foto" >
+                        <img src="{{asset('img/'.$site->foto)}}" id="img-foto">
                     </div> 
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Descripcion</label>
-                        <input type="text" name="descripcion" class="form-control" value="{{$sitio->descripcion}}>
+                        <input type="text" name="descripcion" class="form-control" value="{{$site->descripcion}}">
                         <small class="text-danger">{{$errors->first('descripcion')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Tipo de actividad económica</label>
-                        <input type="text" name="tipo_actividad" class="form-control" value="{{$sitio->tipo_actividad}}>
+                        <input type="text" name="tipo_actividad" class="form-control" value="{{$site->tipo_actividad}}">
                         <small class="text-danger">{{$errors->first('tipo_actividad')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Horario de atencion</label>
-                        <input type="text" name="horario_atencion" class="form-control" value="{{$sitio->horario_atencion}}>
+                        <input type="text" name="horario_atencion" class="form-control" value="{{$site->horario_atencion}}">
                         <small class="text-danger">{{$errors->first('horario_atencion')}}</small>
                     </div>
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Estado |1 Activo | 2 Desactivado</label>
-                        <input type="text" name="estado" class="form-control" value="{{$sitio->estado}}>
+                        <input type="text" name="estado" class="form-control" value="{{$site->estado}}">
                         <small class="text-danger">{{$errors->first('estado')}}</small>
                     </div>
 
