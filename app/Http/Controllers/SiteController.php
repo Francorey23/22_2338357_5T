@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,11 @@ class SiteController extends Controller
      */
     public function show(Site $site)
     {
-        //
+        $services = Service::join("sites","services.sitio_id","=","sites.id")
+                            ->where("sitio_id",$site->id)
+                            ->select("services.servicio","services.precio")
+                            ->get();
+        return view('sites.show',compact('services','site'));                            ;
     }
 
     /**

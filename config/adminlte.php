@@ -270,15 +270,15 @@ return [
             'submenu' => [
                 [
                     'text' => 'Crear sitio',
-                    'url'  => '#',
+                    'route'  => 'site.create',
                 ],
                 [
                     'text' => 'Gestionar sitio',
-                    'url'  => '#',
+                    'route'  => 'site.index',
                 ],
                 [
                     'text' => 'Crear servicios',
-                    'url'  => '#',
+                    'route'  => 'service.create',
                 ],
                 [
                     'text' => 'Reportes',

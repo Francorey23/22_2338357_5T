@@ -35,7 +35,7 @@
                         <td>{{$site->id}}</td>
                         <td>{{$site->municipio}}</td>
                         <td>{{$site->lugar}}</td>
-                        <td>{{$site->nombre}}</td>
+                        <td><a href="{{route('site.show',$site)}}"> {{$site->nombre}}</a></td>
                         <td>{{$site->direccion}}</td>
                         <td>{{$site->telefono}}</td>
                         <td>{{$site->correo}}</td>

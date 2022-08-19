@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 //Ruta para sitios
 Route::resource('site',SiteController::class);
+
+//Ruta para servicios
+Route::resource('service', ServiceController::class);
