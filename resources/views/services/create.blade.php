@@ -48,8 +48,15 @@
 
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <label for="">Sitio</label>
-                        <input type="text" name="sitio_id" class="form-control">
-                        <small class="text-danger">{{$errors->first('sitio_id')}}</small>
+                        <select name="sitio_id" class="form-control" id="">
+                            <option disabled="disabled" value="">
+                                seleccione un sitio
+                            </option>
+                            @foreach ($sites as $site)
+                                <option value="{{$site->id}}">{{$site->nombre}}</option>
+                            @endforeach
+                            <small class="text-danger">{{$errors->first('sitio_id')}}</small>
+                        </select>
                     </div>
                     
                     <div class="row">

@@ -19,8 +19,14 @@ Route::get('/', function () {
     return view('layouts.layout');
 });
 
-//Ruta para sitios
+//rutas para sitio
 Route::resource('site',SiteController::class);
 
-//Ruta para servicios
-Route::resource('service', ServiceController::class);
+//rutas para servicio
+Route::resource('service',ServiceController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
