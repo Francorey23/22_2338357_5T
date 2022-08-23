@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//crear la ruta para hacer una reserva
+route::get('getSite/{site}',[ReservationController::class,'getSite'])->name('getSite');
