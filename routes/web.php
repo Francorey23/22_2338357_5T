@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.layout');
-});
+//Ruta principal del proyecto
+Route::get('/',[IndexController::class,'index']);
 
 //rutas para sitio
 Route::resource('site',SiteController::class);
